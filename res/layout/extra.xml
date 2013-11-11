@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" 
+    >
+
+    <TableRow>
+        <ImageButton
+            android:id="@+id/qrcodebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/extra_qrcode"
+            android:text="this text is invisible" />
+        <ImageButton
+            android:id="@+id/musicbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/extra_music"
+            android:text="this text is invisible" />
+    </TableRow>
+    <TableRow>
+        <ImageButton
+            android:id="@+id/ipcambtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/extra_ipcam"
+            android:text="this text is invisible" />
+        <ImageButton
+            android:id="@+id/informationbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/extra_information"
+            android:text="this text is invisible" />
+    </TableRow>
+
+</TableLayout>
