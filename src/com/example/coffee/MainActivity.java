@@ -37,7 +37,7 @@ public class MainActivity extends TabActivity
         tab_host.addTab(spec);
 
         
-        //
+        //주석추가 ㄴㅁㅇ리만ㅇㄹ
         intent = new Intent().setClass(this, FindCafeActivity.class);
         spec = tab_host.newTabSpec("findCafe");
         spec.setIndicator("카페찾기",getResources().getDrawable(R.drawable.findcafe));
