@@ -9,7 +9,5 @@ public class FindCafeActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.findcafe);
-        WebView myWebView = (WebView)findViewById(R.id.webview);
-        myWebView.loadUrl("http://m.map.naver.com/");
     }
 }
