@@ -68,10 +68,10 @@ int drawable mycafe 0x7f020024
 int drawable newsfeed 0x7f020025
 int drawable setting 0x7f020026
 int id action_settings 0x7f05000a
+int id fragment 0x7f050009
 int id hybrid 0x7f050004
 int id informationbtn 0x7f050008
 int id ipcambtn 0x7f050007
-int id map 0x7f050009
 int id musicbtn 0x7f050006
 int id none 0x7f050000
 int id normal 0x7f050001
