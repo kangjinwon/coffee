@@ -14,7 +14,7 @@ public class IntroActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        //Title Bar Á¦°Å
+        //Title Bar ì œê±°
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.intro);
         h = new Handler();
@@ -26,11 +26,11 @@ public class IntroActivity extends Activity
 			Intent i = new Intent(IntroActivity.this, MainActivity.class);
 			startActivity(i);
 			finish();
-			//fade in ½ÃÀÛ fade out À¸·Î È­¸é Á¾·á ¾Ö´Ï¸ŞÀÌ¼Ç
+			//fade in ì‹œì‘ fade out ìœ¼ë¡œ í™”ë©´ ì¢…ë£Œ ì• ë‹ˆë©”ì´ì…˜
 			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 		}
 	};
-	// ÀÎÆ®·Î È­¸éÁß°£¿¡ µÚ·Î°¡±â ´­·¯¼­ ²¨ ºÀ»½Ã 4ÃÊÈÄ ¸ŞÀÎ ÆäÀÌÁö ¶ß´Â°ÍÀ» ¹æÁö
+	// ì¸íŠ¸ë¡œ í™”ë©´ì¤‘ê°„ì— ë’¤ë¡œê°€ê¸° ëˆŒëŸ¬ì„œ êº¼ì¡‹ì„ì‹œ 4ì´ˆí›„ ë©”ì¸ í˜ì´ì§€ ëœ¨ëŠ”ê²ƒì„ ë°©ì§€
 	@Override
 	public void onBackPressed(){
 		super.onBackPressed();

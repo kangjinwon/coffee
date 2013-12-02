@@ -10,11 +10,11 @@ public class SettingActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        // ÅØ½ºÆ®ºä¸¦ »ı¼ºÇÑ´Ù.
+        // í…ìŠ¤íŠ¸ë·°ë¥¼ ìƒì„±í•œë‹¤.
         TextView tv = new TextView(this);
-        // ÅØ½ºÆ®ºä¿¡ ¹®ÀÚ¿­À» ¼³Á¤ÇÑ´Ù.
+        // í…ìŠ¤íŠ¸ë·°ì— ë¬¸ìì—´ì„ ì„¤ì •í•œë‹¤.
         tv.setText("This is Setting Tab");
-        // ¾×Æ¼ºñÆ¼¿¡ ÅØ½ºÆ®ºä¸¦ ¹èÄ¡ÇÑ´Ù.
+        // ì•¡í‹°ë¹„í‹°ì— í…ìŠ¤íŠ¸ë·°ë¥¼ ë°°ì¹˜í•œë‹¤.
         setContentView(tv);
     }
 }

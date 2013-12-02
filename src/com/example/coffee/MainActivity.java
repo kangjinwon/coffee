@@ -14,56 +14,56 @@ public class MainActivity extends TabActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        // main.xml ÆÄÀÏ¿¡ ±¸¼ºÇÑ ¸®¼Ò½º¸¦ ÀÌ ¾×Æ¼ºñÆ¼¿¡¼­ »ç¿ëÇÑ´Ù.
+        // main.xml íŒŒì¼ì— êµ¬ì„±í•œ ë¦¬ì†ŒìŠ¤ë¥¼ ì´ ì•¡í‹°ë¹„í‹°ì—ì„œ ì‚¬ìš©í•œë‹¤.
         setContentView(R.layout.activity_main);
 
-        // ÀÌ ÅÇ¾×Æ¼ºñÆ¼¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â TabHost °´Ã¼¸¦ ¾ò´Â´Ù. 
+        // ì´ íƒ­ì•¡í‹°ë¹„í‹°ì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” TabHost ê°ì²´ë¥¼ ì–»ëŠ”ë‹¤. 
         TabHost tab_host = getTabHost();  
-        // °¢ ÅÇ¿¡ »ç¿ëÇÒ TabSpec °´Ã¼.
-        // ÅÇÈ£½ºÆ®¿¡ TabWidget °ú FrameLayout ÀÌ »ç¿ëÇÒ Á¤º¸¸¦ ³Ñ°ÜÁÖ´Â ¿ªÇÒÀ» ÇÑ´Ù.
+        // ê° íƒ­ì— ì‚¬ìš©í•  TabSpec ê°ì²´.
+        // íƒ­í˜¸ìŠ¤íŠ¸ì— TabWidget ê³¼ FrameLayout ì´ ì‚¬ìš©í•  ì •ë³´ë¥¼ ë„˜ê²¨ì£¼ëŠ” ì—­í• ì„ í•œë‹¤.
         TabHost.TabSpec spec;
-        // °¢ ÅÇÀÇ FrameLayout ÀÌ »ç¿ëÇÏ´Â ¾×Æ¼ºñÆ¼¸¦ ±¸¼ºÇÏ´Â °´Ã¼
+        // ê° íƒ­ì˜ FrameLayout ì´ ì‚¬ìš©í•˜ëŠ” ì•¡í‹°ë¹„í‹°ë¥¼ êµ¬ì„±í•˜ëŠ” ê°ì²´
         Intent intent;
 
-        // ÅÇ¿¡¼­ ¾×Æ¼ºñÆ¼¸¦ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ÀÎÅÙÆ®¸¦ »ı¼ºÇÑ´Ù.
+        // íƒ­ì—ì„œ ì•¡í‹°ë¹„í‹°ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ ì¸í…íŠ¸ë¥¼ ìƒì„±í•œë‹¤.
         intent = new Intent().setClass(this, NewsFeedActivity.class);
-        // "music" ÀÌ¶ó´Â ÅÂ±× °ªÀ» °¡Áø TabSpec °´Ã¼¸¦ »ı¼ºÇÑ´Ù.
+        // "music" ì´ë¼ëŠ” íƒœê·¸ ê°’ì„ ê°€ì§„ TabSpec ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
         spec = tab_host.newTabSpec("newsfeed");
-        // TabSpec °´Ã¼¿¡ TabWidget °´Ã¼°¡ Ãâ·ÂÇÒ ÅÇÀÇ ÀÌ¸§À» ¼³Á¤ÇÑ´Ù.
-        spec.setIndicator("´º½ºÇÇµå",getResources().getDrawable(R.drawable.newsfeed));
-        // TabSpec °´Ã¼¿¡ FrameLayout ÀÌ Ãâ·ÂÇÒ ÆäÀÌÁö¸¦ ¼³Á¤ÇÑ´Ù.
+        // TabSpec ê°ì²´ì— TabWidget ê°ì²´ê°€ ì¶œë ¥í•  íƒ­ì˜ ì´ë¦„ì„ ì„¤ì •í•œë‹¤.
+        spec.setIndicator("ë‰´ìŠ¤í”¼ë“œ",getResources().getDrawable(R.drawable.newsfeed));
+        // TabSpec ê°ì²´ì— FrameLayout ì´ ì¶œë ¥í•  í˜ì´ì§€ë¥¼ ì„¤ì •í•œë‹¤.
         spec.setContent(intent);
-        // ÅÇÈ£½ºÆ®¿¡ ÇØ´ç Á¤º¸¸¦ °¡Áø ÅÇÀ» Ãß°¡ÇÑ´Ù.
+        // íƒ­í˜¸ìŠ¤íŠ¸ì— í•´ë‹¹ ì •ë³´ë¥¼ ê°€ì§„ íƒ­ì„ ì¶”ê°€í•œë‹¤.
         tab_host.addTab(spec);
 
         
-        //ÁÖ¼®Ãß°¡ ¤¤¤±¤·¸®¸¸¤·¤©
+        //ì£¼ì„ì¶”ê°€ ã„´ã…ã…‡ë¦¬ë§Œã…‡ã„¹
         intent = new Intent().setClass(this, FindCafeActivity.class);
         spec = tab_host.newTabSpec("findCafe");
-        spec.setIndicator("Ä«ÆäÃ£±â",getResources().getDrawable(R.drawable.findcafe));
+        spec.setIndicator("ì¹´í˜ì°¾ê¸°",getResources().getDrawable(R.drawable.findcafe));
         spec.setContent(intent);
         tab_host.addTab(spec);
 
         intent = new Intent().setClass(this, MyCafeActivity.class);
         spec = tab_host.newTabSpec("myCafe");
-        spec.setIndicator("¸¶ÀÌÄ«Æä",getResources().getDrawable(R.drawable.mycafe));
+        spec.setIndicator("ë§ˆì´ì¹´í˜",getResources().getDrawable(R.drawable.mycafe));
         spec.setContent(intent);
         tab_host.addTab(spec);
         
         intent = new Intent().setClass(this, ExtraActivity.class);
         spec = tab_host.newTabSpec("extra");
-        spec.setIndicator("ºÎ°¡±â´É",getResources().getDrawable(R.drawable.more));
+        spec.setIndicator("ë¶€ê°€ê¸°ëŠ¥",getResources().getDrawable(R.drawable.more));
         spec.setContent(intent);
         tab_host.addTab(spec);
         
         intent = new Intent().setClass(this, SettingActivity.class);
         spec = tab_host.newTabSpec("setting");
-        spec.setIndicator("¼³Á¤",getResources().getDrawable(R.drawable.setting));
+        spec.setIndicator("ì„¤ì •",getResources().getDrawable(R.drawable.setting));
         spec.setContent(intent);
         tab_host.addTab(spec);
         
 
-        // Ã¹¹øÂ° ÅÇÀ» ¼±ÅÃÇÑ »óÅÂ·Î ÁöÁ¤ÇÑ´Ù.
+        // ì²«ë²ˆì§¸ íƒ­ì„ ì„ íƒí•œ ìƒíƒœë¡œ ì§€ì •í•œë‹¤.
         tab_host.setCurrentTab(0);
     }
 }
