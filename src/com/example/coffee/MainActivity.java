@@ -1,10 +1,8 @@
 package com.example.coffee;
 import android.app.TabActivity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 
 
 public class MainActivity extends TabActivity
@@ -35,9 +33,8 @@ public class MainActivity extends TabActivity
         spec.setContent(intent);
         // 탭호스트에 해당 정보를 가진 탭을 추가한다.
         tab_host.addTab(spec);
-
         
-        //주석추가 ㄴㅁㅇ리만ㅇㄹ
+        
         intent = new Intent().setClass(this, FindCafeActivity.class);
         spec = tab_host.newTabSpec("findCafe");
         spec.setIndicator("카페찾기",getResources().getDrawable(R.drawable.findcafe));
@@ -53,12 +50,6 @@ public class MainActivity extends TabActivity
         intent = new Intent().setClass(this, ExtraActivity.class);
         spec = tab_host.newTabSpec("extra");
         spec.setIndicator("부가기능",getResources().getDrawable(R.drawable.more));
-        spec.setContent(intent);
-        tab_host.addTab(spec);
-        
-        intent = new Intent().setClass(this, SettingActivity.class);
-        spec = tab_host.newTabSpec("setting");
-        spec.setIndicator("설정",getResources().getDrawable(R.drawable.setting));
         spec.setContent(intent);
         tab_host.addTab(spec);
         

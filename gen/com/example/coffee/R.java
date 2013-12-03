@@ -213,17 +213,19 @@ containing a value of this type.
         public static final int ic_plusone_standard_off_client=0x7f020021;
         public static final int ic_plusone_tall_off_client=0x7f020022;
         public static final int intro=0x7f020023;
-        public static final int more=0x7f020024;
-        public static final int mycafe=0x7f020025;
-        public static final int newsfeed=0x7f020026;
-        public static final int setting=0x7f020027;
+        public static final int menu_insert=0x7f020024;
+        public static final int more=0x7f020025;
+        public static final int mycafe=0x7f020026;
+        public static final int newsfeed=0x7f020027;
+        public static final int setting=0x7f020028;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000a;
+        public static final int action_settings=0x7f05000b;
         public static final int fragment=0x7f050009;
         public static final int hybrid=0x7f050004;
         public static final int informationbtn=0x7f050008;
         public static final int ipcambtn=0x7f050007;
+        public static final int listView1=0x7f05000a;
         public static final int musicbtn=0x7f050006;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
@@ -239,6 +241,7 @@ containing a value of this type.
         public static final int extra=0x7f030001;
         public static final int findcafe=0x7f030002;
         public static final int intro=0x7f030003;
+        public static final int newfeed=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

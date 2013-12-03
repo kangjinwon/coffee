@@ -47,8 +47,6 @@
         </activity>
         <activity android:name="NewsFeedActivity" >
         </activity>
-        <activity android:name="SettingActivity" >
-        </activity>
         
         <meta-data android:value="AIzaSyDz0Vkn_OAWPOBCrC_hOrHs8yhiQfZMkis" android:name="com.google.android.maps.v2.API_KEY"/>
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>

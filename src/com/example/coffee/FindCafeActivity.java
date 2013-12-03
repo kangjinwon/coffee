@@ -39,31 +39,34 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class FindCafeActivity extends FragmentActivity implements
-		LocationListener {
+public class FindCafeActivity extends FragmentActivity implements LocationListener {
 	private GoogleMap mmap;
 	private LocationManager locationManager;
 	private String provider;
-	private double lat;
-	private double lng;
-
+	private Location location;
+	private double lat=37.22245294756333;
+	private double lng=127.18674659729004;
+	LatLng loc = new LatLng(lat, lng); // 위치 좌표 설정
+	CameraPosition cp = new CameraPosition.Builder().target((loc)).zoom(16).build();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.findcafe);
-
+		
+		
 		// main 에서 네트워크 쓰레드 사용가능.
 		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 				.detectDiskReads().detectDiskWrites().detectNetwork()
 				.penaltyLog().build());
 
-		GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(FindCafeActivity.this);
+		GooglePlayServicesUtil.isGooglePlayServicesAvailable(FindCafeActivity.this);
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		provider = locationManager.getBestProvider(criteria, true);
 
 		// mapki ��ü ��
+
 
 		/**
 		 * 현재위치 표시
@@ -127,7 +130,6 @@ public class FindCafeActivity extends FragmentActivity implements
 		if (mmap == null) {
 			mmap = ((SupportMapFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.fragment)).getMap();
-
 			if (mmap != null) {// map 실행
 				setUpMap();
 			}
@@ -137,37 +139,29 @@ public class FindCafeActivity extends FragmentActivity implements
 	private void setUpMap() {
 		mmap.setMyLocationEnabled(true);
 		mmap.getMyLocation();
-
-		// gps 이용 현재 좌표 받아오기
-		myLocation();
-
-		// 카메라 이동
-		LatLng location = new LatLng(lat, lng); // 위치 좌표 설정
-		CameraPosition cp = new CameraPosition.Builder().target((location))
-				.zoom(16).build();
 		mmap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
 		searchOnMap("cafe");
 	}
-
-	boolean locationTag = true;
-
 	
-	//가장 최근위치 좌표 받아오기
-	public void myLocation() {
-		Location loc = locationManager.getLastKnownLocation(provider);
-		lat = loc.getLatitude();
-		lng = loc.getLongitude();
-	}
+	boolean locationTag = true;
 
 	@Override
 	public void onLocationChanged(Location location) {
 		if (locationTag) {
 			Log.d("myLog", "onLocationChanged: !!" + "onLocationChanged!!");
-//			Toast.makeText(FindCafeActivity.this,
-//					"위도  : " + lat + " 경도 : " + lng, Toast.LENGTH_SHORT).show();
+			double lat = location.getLatitude();
+			double lng = location.getLongitude();
+
+			Toast.makeText(FindCafeActivity.this, "위도  : " + lat + " 경도 : " + lng,
+					Toast.LENGTH_SHORT).show();
 			locationTag = false;
 		}
 
+	}
+	public void myLocation() {
+		Location loc = locationManager.getLastKnownLocation(provider);
+		lat = loc.getLatitude();
+		lng = loc.getLongitude();
 	}
 
 	// Marker 추가 함수
@@ -190,27 +184,28 @@ public class FindCafeActivity extends FragmentActivity implements
 
 	}
 
-	// ///////////////// JSON SEARCH
+	/////////////////// JSON SEARCH
 	private void searchOnMap(String search) {
-		// Location loc = locationManager.getLastKnownLocation(provider);
-		// double lat1 = loc.getLatitude();
-		// double lng1 = loc.getLongitude();
-
+//		lat = location.getLatitude();
+//		lng = location.getLongitude();
+		
 		StringBuilder responseBuilder = new StringBuilder();
 		// URL을 이용하여 검색신청을 하고, 결과를 받아 responseBuilder에 저장한다.
 		try {
 
-			URL url = new URL(
-					"http://ajax.googleapis.com/ajax/services/search/local?v=1.0&q="
-							+ URLEncoder.encode(search, "UTF-8") + "&sll="
-							+ lat + "," + lng + "&hl=kr" + "&rsz=8");
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					url.openStream(), "UTF-8")); // 8.13 수정
+			URL url = new 
+				      URL("http://ajax.googleapis.com/ajax/services/search/local?v=1.0&q="+ URLEncoder.encode(search, "UTF-8")
+				       + "&sll="+lat+","+lng
+				       + "&hl=kr"
+				       + "&rsz=8"
+				       );
+			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8")); // 8.13 수정
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				responseBuilder.append(inputLine);
 			}
 			in.close();
+			
 
 		} catch (MalformedURLException me) {
 			me.printStackTrace();
@@ -225,6 +220,8 @@ public class FindCafeActivity extends FragmentActivity implements
 
 			json = json.getJSONObject("responseData");
 			JSONArray jarray = json.getJSONArray("results");
+
+			String result = new String();
 
 			Log.d("jarray.length() : ", Integer.toString(jarray.length()));
 
@@ -254,11 +251,13 @@ public class FindCafeActivity extends FragmentActivity implements
 				// 주소를 이용하여 위도경도 얻어오기
 				// Geocoder를 이용하면 위도경도로 주소를 얻어오거나
 				// 주소를 이용해 위도 경도의 정보를 얻어 올 수 있다
-
+				
 				List<Address> addrList = null;
 				Geocoder geocoder = new Geocoder(this, Locale.KOREAN);
 				try {
 					addrList = geocoder.getFromLocationName(addr, 2);
+					// Toast.makeText(this, addrList.toString(),
+					// Toast.LENGTH_SHORT).show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -271,17 +270,16 @@ public class FindCafeActivity extends FragmentActivity implements
 				location[0] = Double.toString(adr_tmp.getLatitude()); // 위도
 				location[1] = Double.toString(adr_tmp.getLongitude()); // 경도
 				//
-				// JSon Parsing 목록
-				// result += "Title : " + title + "\n";
-				// result += "Address : " + addr + "\n";
-				// result += "StreetAddr : " + streetAddr + "\n";
-				// result += "Phone : " + number + "\n";
-				// result += "Latitude : " + location[0] + "\n";
-				// result += "Longitude : " + location[1] + "\n\n";
-
-				// marker 추가
-				addMarker(adr_tmp.getLatitude(), adr_tmp.getLongitude(), title,
-						number);
+				// 화면에 출력할 String 작성
+				result += "Title : " + title + "\n";
+				result += "Address : " + addr + "\n";
+				result += "StreetAddr : " + streetAddr + "\n";
+				result += "Phone : " + number + "\n";
+				result += "Latitude : " + location[0] + "\n";
+				result += "Longitude : " + location[1] + "\n\n";
+				
+				//marker 추가
+				addMarker(adr_tmp.getLatitude(),adr_tmp.getLongitude(),title,number);
 			}
 
 			Log.d("dd", jarray.getString(0));
@@ -289,7 +287,8 @@ public class FindCafeActivity extends FragmentActivity implements
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
