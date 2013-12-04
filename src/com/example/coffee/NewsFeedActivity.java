@@ -1,9 +1,5 @@
 package com.example.coffee;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -17,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -26,7 +23,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,8 +50,7 @@ public class NewsFeedActivity extends Activity {
 		     public void run() {
 		    	 JSONParser(return_msg);
 		     }
-		}, 5000); // 5초후 실행
-		
+		}, 3000); // 5초후 실행
 	}
 	public boolean onCreateOptionsMenu(Menu menu){
 		super.onCreateOptionsMenu(menu);
@@ -68,6 +63,8 @@ public class NewsFeedActivity extends Activity {
 	}
 	public boolean onOptionsItemSelected(MenuItem item){
 		Toast.makeText(this, "item"+item.getItemId()+" selected", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(this, NewsFeedInsert.class);
+        this.startActivity(intent);
 		return true;
 	}
 
@@ -127,7 +124,7 @@ public class NewsFeedActivity extends Activity {
 			try {
 				Log.d("TCP", "C: Connecting...");
 
-				inetSocket = new Socket("192.168.36.117", 5555);
+				inetSocket = new Socket("192.168.36.102", 5555);
 				// inetSocket.connect(socketAddr);
 				try {
 					PrintWriter out = new PrintWriter(

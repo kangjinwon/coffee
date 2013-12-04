@@ -4,25 +4,24 @@
     android:layout_height="wrap_content" >
 
     <Button
-        android:id="@+id/coffeebtn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/nfcbtn"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="133dp"
-        android:drawableLeft="@drawable/extra_coffee"
-        android:drawablePadding="4dp"
-        android:text="커피 정보" />
-
-    <Button
         android:id="@+id/changebtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="66dp"
         android:drawableLeft="@drawable/extra_change"
         android:drawablePadding="4dp"
         android:text="정보 변경" />
+
+    <Button
+        android:id="@+id/coffeebtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/extra_coffee"
+        android:drawablePadding="4dp"
+        android:text="커피 정보" />
 
 </RelativeLayout>

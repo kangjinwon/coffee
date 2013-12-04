@@ -41,9 +41,9 @@ public class MainActivity extends TabActivity
         spec.setContent(intent);
         tab_host.addTab(spec);
 
-        intent = new Intent().setClass(this, MyCafeActivity.class);
-        spec = tab_host.newTabSpec("myCafe");
-        spec.setIndicator("마이카페",getResources().getDrawable(R.drawable.mycafe));
+        intent = new Intent().setClass(this, OrderActivity.class);
+        spec = tab_host.newTabSpec("orderCoffee");
+        spec.setIndicator("커피주문",getResources().getDrawable(R.drawable.order));
         spec.setContent(intent);
         tab_host.addTab(spec);
         

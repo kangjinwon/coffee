@@ -4,5 +4,20 @@
     <string name="app_name">coffee</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="cafe_prompt">커피 브랜드를 골라주세요</string>
+    
+    <string-array name="cafe_brand">
+        <item>카페베네</item>
+        <item>스타벅스</item>
+        <item>이디야</item>
+        <item>엔젤리너스</item>
+        <item>커피빈</item>
+        <item>할리스</item>
+        <item>세븐몽키스</item>
+        <item>탐앤탐스</item>
+        <item>스위트번즈</item>
+        <item>기타</item>
+    </string-array>
+    
 
 </resources>
